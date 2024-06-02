@@ -1,18 +1,16 @@
-# Newpoject-
-jenkins script
-Explanation:
-Environment Configuration:
+Steps to Use the Script:
 
-SSH_KEY is an environment variable holding the SSH key credentials stored in Jenkins credentials manager.
-Pipeline Stages:
+Install SSH Agent Plugin:
+Ensure you have the SSH Agent plugin installed in Jenkins. You can install it from the Manage Jenkins -> Manage Plugins section.
 
-Each stage corresponds to a set of commands from your list.
-Stage: Check Packages: Loops through hosts and packages to run ls -ld on each package path.
-Stage: Execute Commands: For commands on different users, SSH into the server and run the respective commands.
-Stage: Purge and Edit Profiles: A multiline command executed on rc.xfer@cnd1.
-Usage:
-Save this script in a Jenkinsfile.
-Ensure that the SSH key credential is correctly set up in Jenkins.
-Replace placeholders like ssh-key-id with actual credential IDs.
-Trigger the pipeline job in Jenkins.
-This script assumes that Jenkins has the necessary permissions and SSH keys configured for accessing the remote servers. Adjust the SSH command paths and authentication methods as necessary for your environment.
+Add SSH Credentials:
+Go to Manage Jenkins -> Manage Credentials -> (select domain) -> Add Credentials. Add the SSH username with private key. Note the ID you provide to the credentials, as you will use it in the SSH_CREDENTIALS_ID environment variable in the script.
+
+Create a Pipeline Job:
+
+Go to Jenkins and create a new pipeline job.
+In the job configuration, select "Pipeline script" and paste the above script.
+Adjust the Credential ID:
+Make sure the SSH_CREDENTIALS_ID in the environment section matches the ID of the SSH credentials you added to Jenkins.
+
+This combined script will perform all the tasks you specified, logging into various servers and executing the necessary commands. Adjust the server names, paths, and commands if needed to match your actual environment.
