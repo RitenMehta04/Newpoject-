@@ -33,6 +33,7 @@ Add Parameters:
 
 In the job configuration, check the box for "This project is parameterized".
 Add the following String Parameters for each input:
+
 env_tla_names
 true_cfg
 db_version
@@ -45,8 +46,9 @@ ip2_subnet
 ip_node
 hpns_host
 env_disks
-Add a Build Step:
 
+
+Add a Build Step:
 Add a "Execute shell" build step.
 Copy the contents of the collect_config.sh script into the shell command box, replacing the read commands with Jenkins environment variables.
 
